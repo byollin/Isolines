@@ -1,11 +1,16 @@
-isoline = function(origin, departure, range_type, range, mode, tz = 'America/Los_Angeles', app_id = '', app_code = '') {
+isoline = function(origin, departure, range_type, range, mode, app_id = '', app_code = '') {
     
-    format_time = function(x) {
-        x %>% strftime(format = '%Y-%m-%dT%H:%M:%S%z') %>% str_replace('.{2}$', '')
+    format_time = function(x, origin) {
+        x %>% ymd_hms(tz = tz_lookup_coords(str_split(origin, ',', simplify = TRUE)[1] %>% as.numeric(),
+                                            str_split(origin, ',', simplify = TRUE)[2] %>% as.numeric(),
+                                            warn = FALSE)) %>% strftime(format = '%Y-%m-%dT%H:%M:%S%z') %>%
+            str_replace('.{2}$', '')
     }
     
     formatted_mode      = paste0('fastest;', mode, ';traffic:enabled')
-    formatted_departure = format_time(ymd_hms(departure, tz = tz))
+    formatted_departure = format_time(departure, origin)
+    
+    print(formatted_departure)
     
     url = paste0('https://isoline.route.api.here.com/routing/7.2/calculateisoline.xml?',
                  '&app_id=', app_id,

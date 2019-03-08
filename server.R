@@ -65,20 +65,18 @@ shinyServer(function(input, output, session) {
             
             progress$status$set(message = 'Requesting...')
             
-            departure = strftime(input$departure, '%Y-%m-%d %H:%M:%S')
             range_type = switch(input$range_type, 'Time (minutes)' = 'time', 'Distance (miles)' = 'distance')
             unit       = switch(input$range_type, 'Time (minutes)' = ' minutes', 'Distance (miles)' = ' miles')
+            mode       = switch(input$mode, 'Car' = 'car', 'Pedestrian' = 'pedestrian')
             isoline_sequence = if(input$range_type == 'Time (minutes)') {
-                seq(input$min, input$max, input$step) * 60
+                seq(input$min, input$max, input$step) * 60 %>% sort()
             } else {
-                round(seq(input$min, input$max, input$step) * 1609.34, digits = 0)
+                round(seq(input$min, input$max, input$step) * 1609.34, digits = 0) %>% sort()
             }
-            isoline_sequence = isoline_sequence %>% sort()
-            mode = switch(input$mode, 'Car' = 'car', 'Pedestrian' = 'pedestrian')
             
             layers = sapply(isoline_sequence, function(x) {
                 progress$status$inc(amount = 1/length(isoline_sequence))
-                isoline(str_remove(input$origin, ' '), departure = departure, range_type = range_type, range = x,
+                isoline(str_remove(input$origin, ' '), departure = input$departure, range_type = range_type, range = x,
                         mode = mode, app_id = keys$app_id, app_code = keys$app_code)
             })
             

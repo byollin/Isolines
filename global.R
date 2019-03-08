@@ -7,6 +7,7 @@ suppressWarnings(suppressMessages({
     library(shinyjs)
     library(htmlwidgets)
     library(rgdal)
+    library(lutz)
     library(smoothr)
     library(leaflet)
     library(viridis)
