@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Subrayada');
+
+div.outer {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* datepicker ########################################################################################################*/
+
+.datepicker--day-name {
+    color: #1e242b !important;
+}
+
+.datepicker--cell.-current- {
+    color: #4a4a4a !important;
+}
+
+.datepicker--cell.-selected-, .datepicker--cell.-selected-.-current- {
+    color: white !important;
+    background: #333d47 !important;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pretty .state label {
+    font-size: larger;
+}
+
+#min {
+    width: 200px;
+}
+
+#max {
+    width: 198px;
+}
+
+/* nav pills ######################################################################################################## */
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background: #333d47;
+    color: white;
+}
+
+.nav-pills > li {
+    background: #eeebea;
+    color: black;
+}
+
+.nav-pills > li > a {
+    color: black;
+}
+
+.nav-pills > li + li {
+    background: #eeebea;
+    color: black;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background: #d9d9d6;
+    color: black;
+}
+
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+    font-size: smaller;
+}
+
+.form-group {
+    margin-bottom: 10px;    
+}
+
+.btn {
+    margin-bottom: 10px;
+    line-height: 1.2;
+    padding: 10px 14px;
+}
+
+#dir .btn {
+    text-align: center;
+}
+
+#presets .btn {
+    text-align: center;
+    font-size: small;
+}
+
+#basemaps .btn {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 9px;
+}
+
+/* do not underline icon on hover or when clicked */
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+.panel-heading {
+    padding: 0;
+	border:0;
+}
+
+.panel-title {
+    line-height: 0.5;
+}
+
+.panel-title > a, .panel-title > a:active{
+	display: block;
+	padding: 15px;
+	font-weight: 100;
+}
+
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e114";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
+
+.panel-body {
+    padding: 0;
+}
+
+.panel-primary {
+    border-color: #ffffff;
+}
+
+.panel-primary>.panel-heading {
+    background-color: #2e5f53;
+    border-color: #2e5f53;
+}
+
+.panel {
+    box-shadow: none;
+}
+
+.btn-group-justified>.btn, .btn-group-justified>.btn-group {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    margin-top: 8px;
+}
+
+#info_panel {
+    z-index: 100;
+}
+
+#info {
+    border: none;
+    border-radius: 0;
+    padding: 4px;
+    background-color: #f5f5f5eb;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.popover {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10pt;
+    min-width: 300px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    display: none;
+}
+
+.navbar-default .navbar-brand {
+    color: #777;
+}
+
+.navbar {
+    background: url('network.jpg');
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: -60px;
+    background-color: white;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+    min-height: 60px;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat Subrayada', sans-serif;
+    font-size: 70px;
+    line-height: 32px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #777;
+    text-shadow: #777 0 0 0.05em;
+}
+
+label, .control-label, .help-block, .checkbox, .radio {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+body, input, button, select, td, th, tr { 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+}
+
+body, td, th, tr {
+    font-size: 10pt;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+
+.table > thead > tr > td,
+.table > thead > tr > th {
+    font-weight: bold;
+}
+
+.legend {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+}
+
+.swal-modal {
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+.swal-button {
+    background-color: #333d47;
+    border-radius: 2px;
+}
+
+#controls {
+    height: -webkit-fill-available;
+    overflow: visible;
+    margin-top: 60px;
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+#display {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 2px;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+.leaflet-container {
+    background-color: white !important;
+}
+
+.leaflet-popup-tip {
+  width: 12px;
+  height: 12px;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 1px;
+    padding: 2px 4px;
+}
+
+.leaflet-popup-content {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+.modal.in .modal-dialog {
+    top: 20%;
+}
+
+.modal-body {
+    padding: 0px 20px;
+}
+
+#coord_panel {
+    z-index: 100;
+}
+
+#clear_panel {
+    z-index: 100;
+}
+
+#cite {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+}
+
+#spinner{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 400px;
+}
+
+#clear_map {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+}
