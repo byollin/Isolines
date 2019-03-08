@@ -65,6 +65,7 @@ shinyServer(function(input, output, session) {
             
             progress$status$set(message = 'Requesting...')
             
+            departure  = paste0(input$departure, ' ',input$time, ':00:00')
             range_type = switch(input$range_type, 'Time (minutes)' = 'time', 'Distance (miles)' = 'distance')
             unit       = switch(input$range_type, 'Time (minutes)' = ' minutes', 'Distance (miles)' = ' miles')
             mode       = switch(input$mode, 'Car' = 'car', 'Pedestrian' = 'pedestrian')
@@ -76,10 +77,10 @@ shinyServer(function(input, output, session) {
             
             layers = sapply(isoline_sequence, function(x) {
                 progress$status$inc(amount = 1/length(isoline_sequence))
-                isoline(str_remove(input$origin, ' '), departure = input$departure, range_type = range_type, range = x,
+                isoline(str_remove(input$origin, ' '), departure = departure, range_type = range_type, range = x,
                         mode = mode, app_id = keys$app_id, app_code = keys$app_code)
             })
-            
+
             if(all(sapply(layers, class) == 'SpatialPolygons')) {
                 colors = magma(length(layers), end = 0.8) %>% str_trunc(width = 7, side = 'right', ellipsis = '')
                 sapply(length(layers):1, function(x) {

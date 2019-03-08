@@ -1,0 +1,13 @@
+name: Isolines
+title: Isolines
+username:
+account: byollin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 777077
+bundleId: 1926563
+url: https://byollin.shinyapps.io/Isolines/
+when: 1552087040.67489
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Dockerfile

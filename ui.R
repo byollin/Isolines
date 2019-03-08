@@ -8,10 +8,12 @@ tabPanel(title = ' ',
     # map ##############################################################################################################
     div(class = 'outer',
         tags$head(tags$link(rel = 'stylesheet', type = 'text/css', href = 'styles.css')),
+        tags$head(tags$link(rel = 'stylesheet', type = 'text/css', href = 'ion.rangeSlider.skinSquare.css')),
         absolutePanel(id = 'coord_panel', top = 30, right = 8, width = 'auto',
                       pre(id = 'coords', '47.613085, -122.333729')),
         absolutePanel(id = 'clear_panel', top = 30, left = 510, width = 'auto',
                       actionButton('clear_map', label = 'Clear map', width = '100%')) %>% hidden(),
+        # > help #######################################################################################################
         absolutePanel(id = 'clear_panel', bottom = 6, left = 510,
             dropdownButton(icon = icon('question'), size = 'sm', up = TRUE, width = '700px', inputId = 'help',
                 h2('Map isolines for anywhere in the world!'),
@@ -32,6 +34,7 @@ tabPanel(title = ' ',
                 )               
             )
         ),
+        # > about ######################################################################################################
         absolutePanel(id = 'clear_panel', bottom = 6, left = 560,
             dropdownButton(icon = icon('info'), size = 'sm', up = TRUE, width = '700px',
                 h2('About this application'),
@@ -62,6 +65,7 @@ tabPanel(title = ' ',
                 )
             )
         ),
+        # > map ########################################################################################################
         leafletOutput('map', width = '100%', height = '100%'),
         hidden(div(id = 'spinner',
             div() %>% withSpinner(type = 8, proxy.height = '400px', color = '#333d47')
@@ -70,7 +74,7 @@ tabPanel(title = ' ',
     # sidebar ##########################################################################################################
     fixedPanel(top = 0, left = 0, width = 500, height = '100%',
         wellPanel(id = 'controls',
-            # > origin #########################################################################################
+            # > origin #################################################################################################
             div(style = inline_block_css,
                 column(11, style = 'padding-left: 0',
                     textInput('origin', label = 'Origin:', placeholder = 'Origin (e.g., 47.5887, -122.2327)',
@@ -85,21 +89,32 @@ tabPanel(title = ' ',
                               'select an origin or type a latitude/longitude separated by a comma.'))
                 )
             ),
-            # > departure time #################################################################################
+            # > departure date #########################################################################################
             div(style = inline_block_css,
                 column(11, style = 'padding-left: 0',
-                       airDatepickerInput('departure', label = 'Departure time:', timepicker = TRUE,
-                                          timepickerOpts = timepickerOptions(minutesStep = 5,
-                                                                             timeFormat = 'hh:ii AA'),
-                                          width = '100%', value = Sys.Date())
+                    airDatepickerInput('departure', label = 'Departure date:',width = '100%', value = Sys.Date())
                 ),
                 column(1, style = 'margin-top: 4px; margin-left: -14px;',
-                       br(),
-                       actionButton('departure_help', NULL, icon = icon('question', lib = 'font-awesome')),
-                       bsPopover('departure_help', placement = 'right', trigger = 'focus', title = NULL,
-                                 content = paste0('Time when travel is expected to start. Traffic speed and ',
-                                 'incidents are taken into account when calculating the route. Departure time ',
-                                 'can be past, present or future.'))
+                    br(),
+                    actionButton('departure_help', NULL, icon = icon('question', lib = 'font-awesome')),
+                    bsPopover('departure_help', placement = 'right', trigger = 'focus', title = NULL,
+                              content = paste0('Time when travel is expected to start. Traffic speed and ',
+                              'incidents are taken into account when calculating the route. Departure time ',
+                              'can be past, present or future.'))
+                )
+            ),
+            # > departure time #########################################################################################
+            div(style = inline_block_css,
+                column(11, style = 'padding-left: 0',
+                    sliderInput('time', 'Time range: ', min = 0, max = 23, post = ':00', step = 1, value = 17)
+                ),
+                column(1, style = 'margin-top: 4px; margin-left: -14px;',
+                    br(),
+                    actionButton('time_help', NULL, icon = icon('question', lib = 'font-awesome')),
+                    bsPopover('time_help', placement = 'right', trigger = 'focus', title = NULL,
+                            content = paste0('Time when travel is expected to start. Traffic speed and ',
+                                             'incidents are taken into account when calculating the route. Departure time ',
+                                             'can be past, present or future.'))
                 )
             ),
             # > mode ###########################################################################################
