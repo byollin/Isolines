@@ -136,13 +136,13 @@ shinyServer(function(input, output, session) {
         content = function(f) {
             tmp = tempdir()
             old_shapefiles = list.files(tmp, pattern = '.*\\.(shp|dbf|prj|shx)$')
-            file.remove(paste0(tmp, '\\', old_shapefiles))
+            file.remove(paste0(tmp, '/', old_shapefiles))
             sapply(1:length(results$data), function(x) {
                 out = do.call('rbind', results$data[[x]])
                 writeOGR(out, dsn = tmp, layer = paste0('isochrone_', x), driver = 'ESRI Shapefile', overwrite = TRUE)
             })
             zip_files = list.files(tmp, pattern = '.*\\.(shp|dbf|prj|shx)$')
-            zip_files = paste0(tmp, '\\', zip_files)
+            zip_files = paste0(tmp, '/', zip_files)
             zip(zipfile = f, files = zip_files, flags = '-j')
         },
         contentType = 'application/zip'

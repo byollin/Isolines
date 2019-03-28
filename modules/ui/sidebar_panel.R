@@ -17,14 +17,15 @@ sidebar_panel = function() {
         input_ui(input_id = 'departure',
                  input_element = airDatepickerInput('departure', label = 'Departure date:', width = '100%',
                                                     value = Sys.Date()),
-                 help = paste0('Time when travel is expected to start. Traffic speed and incidents are taken into ',
+                 help = paste0('Date when travel is expected to start. Traffic speed and incidents are taken into ',
                                'account when calculating the route. Departure time can be past, present or future.')),
         # departure time ###############################################################################################
         input_ui(input_id = 'time',
                  input_element = sliderInput('time', 'Time range: ', min = 0, max = 23, post = ':00', step = 1,
                                              value = 17),
                  help = paste0('Time when travel is expected to start. Traffic speed and incidents are taken into ',
-                               'account when calculating the route. Departure time can be past, present or future.')),
+                               'account when calculating the route. Departure time can be past, present or future.'),
+                 margin = 18),
         # mode #########################################################################################################
         input_ui(input_id = 'mode',
                  # TODO: fix car and pedestiran icons
@@ -33,14 +34,14 @@ sidebar_panel = function() {
                                                                `<img src="ped.png", height = 16px, style = "margin-top: -2px;">` = 'Pedestrian'),
                                                    selected = 'Car', justified = TRUE),
                  help = paste0('This option controls the mode type. Possible values are car (driving) or pedestrian ',
-                               '(walking).')),
+                               '(walking).'), margin = 8),
         # range type ###################################################################################################
         input_ui(input_id = 'range_type',
                  input_element = radioGroupButtons('range_type', label = 'Range type:',
                                                    choices = c('Time (minutes)', 'Distance (miles)'),
                                                    selected = 'Time (minutes)', justified = TRUE),
                  help = paste0('Specifies type of range. Possible values are distance or time. For distance the unit ',
-                               'is miles. For time the unit is minutes.')),
+                               'is miles. For time the unit is minutes.'), margin = 8),
         # range ########################################################################################################
         div(style = inline_block_css(),
             column(5, style = 'padding-left: 0',

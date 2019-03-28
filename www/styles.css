@@ -10,14 +10,6 @@ div.outer {
     padding: 0;
 }
 
-a#download {
-    width: 100%;
-}
-
-i.fa.fa-download {
-    display: none;
-}
-
 /* datepicker ########################################################################################################*/
 
 .datepicker--day-name {
@@ -297,6 +289,14 @@ h1, h2, h3, h4 {
 
 .modal-body {
     padding: 0px 20px;
+}
+
+a#download {
+    width: 100%;
+}
+
+i.fa.fa-download {
+    display: none;
 }
 
 #coord_panel {

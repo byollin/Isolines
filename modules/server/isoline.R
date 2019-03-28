@@ -50,9 +50,10 @@ isoline = function(origin, departure, range_type, range, mode, app_id = '', app_
                 lng = sapply(coords, function(x) { str_split(x, ',')[[1]][2] }) %>% as.numeric()
                 list(Polygon(as.matrix(data.frame(lng, lat)))) %>% Polygons(ID = x)
             })
-            df = data.frame('origin' = origin, 'departure' = departure, 'range_type' = range_type, 'range' = range)
+            df = data.frame('origin' = rep(origin, length(data)), 'departure' = rep(departure, length(data)),
+                            'range_type' = rep(range_type, length(data)), 'range' = rep(range, length(data)))
             data = SpatialPolygons(poly, proj = CRS('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')) %>%
-                smooth(method = 'ksmooth', smoothness = 3)
+                   smooth(method = 'ksmooth', smoothness = 3)
             data = SpatialPolygonsDataFrame(data, data = df, match.ID = FALSE)   
         }
     }

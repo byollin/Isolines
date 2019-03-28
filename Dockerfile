@@ -7,6 +7,8 @@ RUN apt-get update \
 	libssl-dev \
 	libgdal-dev \
 	libproj-dev \
+	libv8-dev \
+	libudunits2-dev \
 	nginx
 
 # install from CRAN
@@ -32,13 +34,11 @@ RUN R -e "devtools::install_github('daattali/shinyjs')" && \
 	R -e "devtools::install_github('ramnathv/htmlwidgets')" && \
 	R -e "devtools::install_github('rstudio/leaflet')" 
 
-# remove demo shiny apps
-RUN rm -rf /srv/*
+# remove default app
+RUN rm -rf /srv/shiny-server/*
 
-# replace with directory of shiny apps
-RUN mkdir /srv/isolines/
-COPY . /srv/isolines/
-RUN rm /srv/isolines/Dockerfile
+# replace with your app
+COPY . /srv/shiny-server/
 
 # replace nginx and shiny server configuration
 RUN rm /etc/nginx/sites-enabled/default
