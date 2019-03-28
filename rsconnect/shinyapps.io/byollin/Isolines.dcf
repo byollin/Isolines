@@ -5,9 +5,9 @@ account: byollin
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 777077
-bundleId: 1926563
+bundleId: 1926647
 url: https://byollin.shinyapps.io/Isolines/
-when: 1552087040.67489
+when: 1552089666.59713
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: Dockerfile

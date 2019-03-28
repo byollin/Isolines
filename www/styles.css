@@ -10,6 +10,14 @@ div.outer {
     padding: 0;
 }
 
+a#download {
+    width: 100%;
+}
+
+i.fa.fa-download {
+    display: none;
+}
+
 /* datepicker ########################################################################################################*/
 
 .datepicker--day-name {

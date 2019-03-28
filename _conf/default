@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    location / {
+        # redirect all HTTP traffic to localhost:3838
+        proxy_pass http://localhost:3838;
+        proxy_redirect http://localhost:3838/ $scheme://$host/;
+        # websocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_read_timeout 20d;
+        proxy_buffering off;
+    }
+}
