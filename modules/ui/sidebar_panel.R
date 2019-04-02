@@ -59,9 +59,9 @@ sidebar_panel = function() {
         ),
         # step #########################################################################################################
         input_ui(input_id = 'step',
-                 input_element = numericInput('step', label = 'Gap size:', min = 1, step = 1, value = 5),
-                 help = paste0('Gap size between each isoline. For distance the unit is miles. For time the unit is ',
-                               'minutes.')),
+                 input_element = numericInput('step', label = 'Interval size:', min = 1, step = 1, value = 5),
+                 help = paste0('Interval size between each isoline. For distance the unit is miles. For time the unit ',
+                               'is minutes.')),
         actionButton('request', label = 'Request isolines', width = '100%'),
         downloadButton('download', label = 'Download results', class = list(width = '100%')) %>% hidden()
     )
